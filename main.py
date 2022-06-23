@@ -23,15 +23,6 @@ grid_point = st.sidebar.slider(
     value=100
     )
 
-st.latex(r'''
-Pr(w \mid n, p) =  \frac{n!}{w!(n − w)!} p^w (1 − p)^{n−w}
-''')
-st.markdown('''
-Read the above as:
-
-The counts of “water” W and “land’ L are distributed binomially, with probability p of “water” on each toss.
-''')
-
 @st.cache(persist=True, show_spinner=True)
 def grid_approx(k, n, grid_point):
     # define grid
@@ -48,3 +39,12 @@ df = grid_approx(k, n, grid_point)
 fig = px.area(df, x="prob_p", y="prob_w")
 
 st.plotly_chart(fig)
+
+st.latex(r'''
+Pr(w \mid n, p) =  \frac{n!}{w!(n − w)!} p^w (1 − p)^{n−w}
+''')
+st.markdown('''
+Read the above as:
+
+The counts of “water” W and “land’ L are distributed binomially, with probability p of “water” on each toss.
+''')
